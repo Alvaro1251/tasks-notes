@@ -5,17 +5,18 @@
 
 <ul>
     {% for task in tasks %}
+    <li>
         <a href="{% url 'task_detail' task.id %}">
-            <li>
                 {% if task.important %}
                     <strong>{{task.title}}</strong>
                 {% else %}
-                    {{task.title}}
+                    {{task.title}} {{task.title}}
                 {% endif %}
                 <p>{{task.description}}</p>
                 <p>{{task.user.username}}</p>
-            </li>
-        </a>
+                {{task.datecompleted | date:'M j Y:i'}}
+            </a>
+        </li>
     {% endfor %}
 </ul>
 
